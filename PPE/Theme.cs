@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PPE
 {
-    class DaoClient
+    class Theme
     {
-        
+        public int id { get; set; }
+        public string nom { get; set; }
     }
 }
