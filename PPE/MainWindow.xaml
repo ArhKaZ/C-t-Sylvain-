@@ -1,0 +1,25 @@
+﻿<Window x:Name="Window" x:Class="PPE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPE"
+        mc:Ignorable="d"
+        Title="Logiciel de comptabilité" Height="450" Width="800">
+    <Grid>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Clients">
+                <DataGrid x:Name="DG_Client" HorizontalAlignment="Left" Height="359" VerticalAlignment="Top" Width="728" Margin="10,50,0,0"/>
+            </TabItem>
+            <TabItem Header="Crédits"></TabItem>
+            <TabItem Header="Transactions"></TabItem>
+            <ListBox Height="100" Width="100"/>
+
+
+
+
+
+        </TabControl>
+        
+    </Grid>
+</Window>
