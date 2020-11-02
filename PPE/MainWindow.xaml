@@ -7,9 +7,14 @@
         mc:Ignorable="d"
         Title="Logiciel de comptabilité" Height="450" Width="800">
     <Grid>
-        <TabControl TabStripPlacement="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="773*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="2">
             <TabItem Header="Clients">
-                <DataGrid x:Name="DG_Client" HorizontalAlignment="Left" Height="359" VerticalAlignment="Top" Width="728" Margin="10,50,0,0"/>
+                <DataGrid x:Name="DG_Client" HorizontalAlignment="Left" Height="359" VerticalAlignment="Top" Width="631" Margin="10,10,0,0"/>
+               
             </TabItem>
             <TabItem Header="Crédits"></TabItem>
             <TabItem Header="Transactions"></TabItem>
@@ -19,7 +24,10 @@
 
 
 
+
         </TabControl>
-        
+       
+
+
     </Grid>
 </Window>
