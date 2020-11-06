@@ -26,6 +26,7 @@
                     <TextBox x:Name="Txt_SearchC" Grid.Column="1" Grid.Row="0" Width="350" Height="40" HorizontalAlignment="Right" Background="#FFD3E9F7" FontSize="30" Margin="0,25" />
                     <ListBox x:Name="Lst_InfoClient" Grid.Row="1" Grid.Column="2" Background="#FFE8F0F5" Margin="20"/>
                     <Button x:Name="Btn_Modif" Grid.Row="2" Grid.Column="2" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Modifier" FontSize="30" Margin="0,26,0,27"/>
+                    button
                 </Grid>
             </TabItem>
             <TabItem Header="Crédits" Height="50" Width="100">
