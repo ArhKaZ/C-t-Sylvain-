@@ -61,5 +61,10 @@ namespace PPE
         {
 
         }
+
+        private void TabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
