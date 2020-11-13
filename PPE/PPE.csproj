@@ -55,13 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Avis.cs" />
-    <Compile Include="Reservation.cs" />
-    <Compile Include="Salle.cs" />
-    <Compile Include="Theme.cs" />
-    <Compile Include="Transaction.cs" />
-    <Compile Include="Utilisateur.cs" />
-    <Compile Include="Ville.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,8 +63,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Client.cs" />
-    <Compile Include="DaoClient.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

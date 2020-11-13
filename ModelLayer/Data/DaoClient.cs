@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPE
+namespace PPE.ModelLayer.Data
 {
-    class Ville
+    class DaoClient
     {
-        public int id { get; set; }
-        public string nom { get; set; }
+        
     }
 }

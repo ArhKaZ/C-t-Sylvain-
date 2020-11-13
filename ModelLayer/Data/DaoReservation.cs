@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPE
+namespace ModelLayer.Data
 {
-    class DaoClient
+    class DaoReservation
     {
-        
     }
 }

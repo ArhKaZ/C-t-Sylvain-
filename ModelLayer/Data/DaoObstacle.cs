@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPE
+namespace ModelLayer.Data
 {
-    class Theme
+    class DaoObstacle
     {
-        public int id { get; set; }
-        public string nom { get; set; }
     }
 }

@@ -27,35 +27,7 @@ namespace PPE
             InitializeComponent();
            // DG_Client.ItemsSource = LoadCollectionData();
         }
-        private List<Client> LoadCollectionData()
-        {
-            List<Client> clients = new List<Client>();
-            clients.Add(new Client()
-            {
-                id = 1,
-                prenom = "Sylvain",
-                nom = "Luiset",
-                telephone = 0622238704,
-                mail = "sylvain.luiset@saintmichelannecy.fr",
-                credit = 1000000,
-                dateNaissance = new DateTime(2000 - 04 - 11),
-                photo = "",
-                nbpartie = 3000
-            });
-            clients.Add(new Client()
-            {
-                id = 1,
-                prenom = "Antoine",
-                nom = "Girard",
-                telephone = 0646824973,
-                mail = "antoine.girard@saintmichelannecy.fr",
-                credit = 300,
-                dateNaissance = new DateTime(2000 - 04 - 11),
-                photo = "",
-                nbpartie = 2
-            });
-            return clients;
-        }
+        
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
