@@ -19,7 +19,7 @@ namespace ModelLayer.Data
 
         public void Insert(Reservation uneReservation)
         {
-            string query = "Salle (dateRes, id, idClient, idSalle, prix, idtechnicien, nbClient, idTheme) VALUES ('"
+            string query = "Reservation (dateRes, id, idClient, idSalle, prix, idtechnicien, nbClient, idTheme) VALUES ('"
                 + uneReservation.DateRes + "',"
                 + uneReservation.Id + ","
                 + uneReservation.IdClient.Id + ","
@@ -28,27 +28,29 @@ namespace ModelLayer.Data
                 + uneReservation.IdTechnicien + ","
                 + uneReservation.NbClient + ","
                 + uneReservation.IdTheme + ")";
-                
-                
 
             this.mydbal.Insert(query);
 
         }
 
-        public void Update(Salle uneSalle)
+        public void Update(Reservation uneReservation)
         {
-            string query = "Salle Set id= " + uneSalle.Id
-                + ", idLieu = " + uneSalle.IdLieu.Id
-                + ", idTheme = " + uneSalle.IdTheme.Id;
-
+            string query = "Salle Set id= '" + uneReservation.DateRes
+                + "', id = " + uneReservation.Id
+                + ", idClient = " + uneReservation.IdClient.Id
+                + ", idSalle = " + uneReservation.IdSalle.Id
+                + ", prix = " + uneReservation.Prix
+                + ", idTechnicien = " + uneReservation.IdTechnicien.Id
+                + ", nbClient = " + uneReservation.NbClient
+                + ", idTheme = " + uneReservation.IdTheme + ")";
             this.mydbal.Update(query);
         }
 
-        public void Delete(Salle uneSalle)
+        public void Delete(Reservation uneReservation)
         {
-            string query = "Salle Where id = " + uneSalle.Id;
+            string query = "Reservation Where id = " + uneReservation.Id;
             this.mydbal.Delete(query);
         }
     }
 }
-}
+

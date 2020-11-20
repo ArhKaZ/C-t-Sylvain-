@@ -18,7 +18,17 @@ namespace ModelLayer.Business
         private string photo;
         private int nbpartie;
 
-        public Client(int id, string prenom, string nom, int telephone, string mail, int credit, DateTime dateNaissance, string photo, int nbpartie)
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; }
+        public string Prenom { get => prenom; set => prenom = value; }
+        public int Telephone { get => telephone; set => telephone = value; }
+        public string Mail { get => mail; set => mail = value; }
+        public int Credit { get => credit; set => credit = value; }
+        public DateTime DateNaissance { get => dateNaissance; set => dateNaissance = value; }
+        public string Photo { get => photo; set => photo = value; }
+        public int Nbpartie { get => nbpartie; set => nbpartie = value; }
+
+        public Client(int id, string nom, string prenom, int telephone, string mail, int credit, DateTime dateNaissance, string photo, int nbpartie)
         {
             Id = id;
             Nom = nom;
@@ -31,14 +41,7 @@ namespace ModelLayer.Business
             Nbpartie = nbpartie;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
-        public string Nom { get => nom; set => nom = value; }
-        public int Telephone { get => telephone; set => telephone = value; }
-        public string Mail { get => mail; set => mail = value; }
-        public int Credit { get => credit; set => credit = value; }
-        public DateTime DateNaissance { get => dateNaissance; set => dateNaissance = value; }
-        public string Photo { get => photo; set => photo = value; }
-        public int Nbpartie { get => nbpartie; set => nbpartie = value; }
+        public Client()
+        { }
     }
 }
