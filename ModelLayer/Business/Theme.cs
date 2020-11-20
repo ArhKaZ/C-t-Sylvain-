@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Theme
+   public class Theme
     {
-        private int _id;
-        private string _nom;
+        private int id;
+        private string nom;
 
         public Theme(int id, string nom)
         {
-            _id = id;
-            _nom = nom;
+            Id = id;
+            Nom = nom;
         }
 
-        public int id { get => _id; set => _id = value; }
-        public string nom { get => _nom; set => _nom = value; }
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; }
     }
 }

@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Salle
+    public class Salle
     {
-        private int _id;
-        private int _idLieu;
-        private int _idTheme;
+        private int id;
+        private Ville idLieu;
+        private Theme idTheme;
 
-        public Salle(int id, int idLieu, int idTheme)
+        public Salle(int id, Ville idLieu, Theme idTheme)
         {
-            _id = id;
-            _idLieu = idLieu;
-            _idTheme = idTheme;
+            Id = id;
+            IdLieu = idLieu;
+            IdTheme = idTheme;
         }
 
-        public int id { get => _id; set => _id = value; }
-        public int idLieu { get => _idLieu; set => _idLieu = value; }
-        public int idTheme { get => _idTheme; set => _idTheme = value; }
+        public int Id { get => id; set => id = value; }
+        public Ville IdLieu { get => idLieu; set => idLieu = value; }
+        public Theme IdTheme { get => idTheme; set => idTheme = value; }
     }
 }

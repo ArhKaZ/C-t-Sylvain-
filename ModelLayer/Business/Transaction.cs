@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Transaction
+    public class Transaction
     {
-        private int _id;
-        private char _operation;
-        private int _montant;
-        private int _reservation;
-        private int _idClient;
+        private int id;
+        private char operation;
+        private int montant;
+        private Reservation reservation;
+        private Client idClient;
 
-        public Transaction(int id, char operation, int montant, int reservation, int idClient)
+        public Transaction(int id, char operation, int montant, Reservation reservation, Client idClient)
         {
-            _id = id;
-            _operation = operation;
-            _montant = montant;
-            _reservation = reservation;
-            _idClient = idClient;
+            Id = id;
+            Operation = operation;
+            Montant = montant;
+            Reservation = reservation;
+            IdClient = idClient;
         }
 
-        public int id { get => _id ; set => _id = value; }
-        public char operation { get => _operation; set => _operation = value; }
-        public int montant { get => _montant; set => _montant= value; }
-        public int reservation { get => _reservation; set => _reservation = value; }
-        public int idClient { get => _idClient; set => _idClient = value; }
+        public int Id { get => id ; set => id = value; }
+        public char Operation { get => operation; set => operation = value; }
+        public int Montant { get => montant; set => montant= value; }
+        public Reservation Reservation { get => reservation; set => reservation = value; }
+        public Client IdClient { get => idClient; set => idClient = value; }
     }
 }
