@@ -31,7 +31,7 @@ namespace ModelLayer.Data
                 + theObstacle.Commentaire + "',"
                 + theObstacle.Difficulte + ",'"
                 + theObstacle.Prix + ",'"
-                + theObstacle.IdTheme.id + ")";
+                + theObstacle.IdTheme.Id + ")";
             this.thedbal.Insert(query);
         }
 
@@ -63,7 +63,7 @@ namespace ModelLayer.Data
                 + "', commentaire = '" + myObstacle.Commentaire
                 + "', difficulte = " + myObstacle.Difficulte
                 + ", prix = " + myObstacle.Prix
-                + ", theme = " + myObstacle.IdTheme.id;
+                + ", theme = " + myObstacle.IdTheme.Id;
 
             this.thedbal.Update(query);
 
