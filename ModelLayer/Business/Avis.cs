@@ -30,6 +30,7 @@ namespace ModelLayer.Business
             IdTheme = unTheme;
         }
 
+        public Avis() { }
         
     }
 }

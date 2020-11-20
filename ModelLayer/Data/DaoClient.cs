@@ -13,12 +13,12 @@ namespace ModelLayer.Data
 {
     class DaoClient
     {
-        private Dbal thedbal;
+        private Dbal mydbal;
         private DaoClient theDaoClient;
 
-        public DaoClient(Dbal mydbal)
+        public DaoClient(Dbal dbal)
         {
-            this.thedbal = mydbal;
+            this.mydbal = dbal;
         }
 
         public void Insert(Client theClient)
@@ -33,7 +33,7 @@ namespace ModelLayer.Data
                 + theClient.DateNaissance + "',"
                 + theClient.Photo + ","
                 + theClient.Nbpartie + ")";
-            this.thedbal.Insert(query);
+            this.mydbal.Insert(query);
         }
 
         public void InsertFromCSV(string filename)
@@ -67,13 +67,13 @@ namespace ModelLayer.Data
             +"', photo = " + myCLient.Photo
             +", NbPartie =" + myCLient.Nbpartie;
 
-            this.thedbal.Update(query);
+            this.mydbal.Update(query);
         }
 
         public List<Client> SelectAll()
         {
             List<Client> listClient = new List<Client>();
-            DataTable myTable = this.thedbal.SelectAll("Clients");
+            DataTable myTable = this.mydbal.SelectAll("Clients");
 
             foreach(DataRow r in myTable.Rows)
             {
@@ -84,7 +84,7 @@ namespace ModelLayer.Data
 
         public Client SelectById(int id)
         {
-            DataRow rowClient = this.thedbal.SelectById("Clients", id);
+            DataRow rowClient = this.mydbal.SelectById("Clients", id);
             Client myCLient = this.theDaoClient.SelectById((int)rowClient["nom"]);
             
             return new Client((int)rowClient["id"], (string)rowClient["nom"], (string)rowClient["prenom"], (int)rowClient["telephone"], (string)rowClient["mail"], (int)rowClient["credit"], (DateTime)rowClient["dateNaissance"], (string)rowClient["photo"], (int)rowClient["NbPartie"]);
@@ -93,7 +93,7 @@ namespace ModelLayer.Data
         public Client SelectByName(string name)
         {
             string search = "nom = '" + name + "'";
-            DataTable tableClient = this.thedbal.SelectByField("Clients", search);
+            DataTable tableClient = this.mydbal.SelectByField("Clients", search);
             Client myClient = this.theDaoClient.SelectById((int)tableClient.Rows[0]["nom"]);
             return new Client((int)tableClient.Rows[0]["id"], (string)tableClient.Rows[0]["nom"], (string)tableClient.Rows[0]["prenom"], (int)tableClient.Rows[0]["telephone"], (string)tableClient.Rows[0]["mail"], (int)tableClient.Rows[0]["credit"], (DateTime)tableClient.Rows[0]["dateNaissance"], (string)tableClient.Rows[0]["photo"], (int)tableClient.Rows[0]["NbPartie"]);
         }
@@ -102,7 +102,7 @@ namespace ModelLayer.Data
         {
             string query = " Clients where name = '" + unCLient.Id + "';";
 
-            this.thedbal.Delete(query);
+            this.mydbal.Delete(query);
 
 
 

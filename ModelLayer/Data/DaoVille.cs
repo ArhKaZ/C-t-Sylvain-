@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Business;
-using CsvHelper;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
 using System.Data;
 using System.Runtime.CompilerServices;
-using CsvHelper.Configuration;
-using CsvHelper.Expressions;
-using CsvHelper.TypeConversion;
 using System.IO;
+using CsvHelper;
 using System.Globalization;
 
 namespace ModelLayer.Data

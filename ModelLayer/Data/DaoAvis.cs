@@ -16,12 +16,12 @@ namespace ModelLayer.Data
 {
     public class DaoAvis
     {
-        private Dbal thedbal;
+        private Dbal mydbal;
         private DaoAvis theDaoAvis;
 
         public DaoAvis(Dbal mydbal)
         {
-            this.thedbal = mydbal;
+            this.mydbal = mydbal;
         }
 
 
@@ -33,7 +33,7 @@ namespace ModelLayer.Data
                 + theAvis.Note + ","
                 + theAvis.Commentaire + ","
                 + theAvis.IdTheme.Id + "')";
-            this.thedbal.Insert(query);
+            this.mydbal.Insert(query);
         }
 
         public void InsertFromCSV(string filename)
@@ -63,14 +63,14 @@ namespace ModelLayer.Data
                 + ", commentaire = '" + myAvis.Commentaire.Replace("'", "''")
                 + "', idTheme = " + myAvis.IdTheme.Id
                 + "where id = " + myAvis.Id;
-            this.thedbal.Update(query);
+            this.mydbal.Update(query);
         }
 
 
         public List<Avis> SelectAll()
         {
             List<Avis> listAvis = new List<Avis>();
-            DataTable myTable = this.thedbal.SelectAll("Avis");
+            DataTable myTable = this.mydbal.SelectAll("Avis");
 
             foreach (DataRow r in myTable.Rows)
             {
@@ -81,7 +81,7 @@ namespace ModelLayer.Data
 
         public Avis SelectById(int id)
         {
-            DataRow rowAvis = this.thedbal.SelectById("Avis", id);
+            DataRow rowAvis = this.mydbal.SelectById("Avis", id);
             Avis myAvis = this.theDaoAvis.SelectById((int)rowAvis["idClient"]);
             return new Avis((int)rowAvis["id"], (Client)rowAvis["idClient"], (int)rowAvis["note"], (string)rowAvis["commentaire"], (Theme)rowAvis["idTheme"]);
         }
@@ -90,7 +90,7 @@ namespace ModelLayer.Data
         {
             string query = " Avis where id = " + unAvis.Id + ";";
 
-            this.thedbal.Delete(query);
+            this.mydbal.Delete(query);
         }
     }
 }

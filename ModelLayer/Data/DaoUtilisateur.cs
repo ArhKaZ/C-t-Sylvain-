@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Business;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
+
 namespace ModelLayer.Data
 {
     class DaoUtilisateur
@@ -43,6 +51,29 @@ namespace ModelLayer.Data
         {
             string query = "Utilisateur Where id = " + unUser.Id;
             this.mydbal.Delete(query);
+        }
+
+        public List<Utilisateur> SelectAll()
+        {
+            List<Utilisateur> listUtilisateur = new List<Utilisateur>();
+            DataTable myTable = this.mydbal.SelectAll("Utilisateur");
+
+            foreach (DataRow r in myTable.Rows)
+            {
+                listUtilisateur.Add(new Utilisateur(
+                    (int)r["id"],
+                    (char)r["role"],
+                    (Ville)r["Ville"],
+                    (string)r["identifiant"],
+                    (string)r["mdp"]));
+            }
+            return listUtilisateur;
+        }
+
+        public Utilisateur SelectbyId(int id)
+        {
+            DataRow rowUtilisateur = this.mydbal.SelectById("utilisateur", id);
+            return new Utilisateur((int)rowUtilisateur["id"],(char)rowUtilisateur["role"])
         }
     }
 }
