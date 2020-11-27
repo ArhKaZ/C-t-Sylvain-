@@ -14,16 +14,16 @@ using System.Globalization;
 
 namespace ModelLayer.Data
 {
-    class DaoUtilisateur
+    public class DaoUtilisateur
     {
         private Dbal mydbal;
         private DaoUtilisateur theDaoUser;
         private DaoVille theDaoVille;
 
-        public DaoUtilisateur(Dbal dbal, DaoUtilisateur DaoUser)
+        public DaoUtilisateur(Dbal dbal, DaoVille theDaoVille)
         {
-            this.mydbal = dbal;
-            this.theDaoUser = DaoUser;
+            mydbal = dbal;
+            this.theDaoVille = theDaoVille;
         }
 
         public void Insert(Utilisateur unUser)

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PPE;
+using ModelLayer.Business;
+using ModelLayer.Data;
 
 namespace PPE
 {

@@ -8,7 +8,7 @@ using ModelLayer.Business;
 
 namespace ModelLayer.Data
 {
-    class DaoPlacement_Obst
+    public class DaoPlacement_Obst
     {
         private Dbal thedbal;
         private DaoReservation theDaoReservation;
@@ -17,7 +17,7 @@ namespace ModelLayer.Data
 
         public DaoPlacement_Obst(Dbal mydabal, DaoReservation theDaoReservation, DaoObstacle theDaoObstacle)
         {
-            this.thedbal = mydabal;
+            thedbal = mydabal;
             this.theDaoReservation = theDaoReservation;
             this.theDaoObstacle = theDaoObstacle;
         }
@@ -38,7 +38,7 @@ namespace ModelLayer.Data
 
             foreach (DataRow r in myTable.Rows)
             {
-                Reservation myReservation = this.theDaoReservation.SelectById((int)r["id"]);
+                Reservation myReservation = this.theDaoReservation.SelectbyId((int)r["id"]);
                 Obstacle myObstacle = this.theDaoObstacle.SelectById((int)r["id"]);
                 listPlacement_obs.Add(new Placement_Obstacle((int)r["num_placement"], myReservation, myObstacle));
             }

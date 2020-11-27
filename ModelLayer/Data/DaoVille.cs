@@ -19,10 +19,10 @@ namespace ModelLayer.Data
         private Dbal mydbal;
         private DaoVille theDaoVille;
 
-        public DaoVille(Dbal dbal, DaoVille DaoVille)
+        public DaoVille(Dbal dbal)
         {
-            this.mydbal = dbal;
-            this.theDaoVille = DaoVille;
+            mydbal = dbal;
+            
         }
 
         public void Insert(Ville uneVille)

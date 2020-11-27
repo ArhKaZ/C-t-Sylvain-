@@ -25,6 +25,6 @@ namespace ModelLayer.Business
         public Ville IdLieu { get => idLieu; set => idLieu = value; }
         public Theme IdTheme { get => idTheme; set => idTheme = value; }
         
-        public Salle() { }
+       
     }
 }

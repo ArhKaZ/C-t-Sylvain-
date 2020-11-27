@@ -13,7 +13,7 @@ using CsvHelper;
 using System.Globalization;
 namespace ModelLayer.Data
 {
-    class DaoReservation
+    public class DaoReservation
     {
         private Dbal mydbal;
         private DaoReservation theDaoReservation;
@@ -22,10 +22,13 @@ namespace ModelLayer.Data
         private DaoUtilisateur theDaoUtilisateur;
         private DaoTheme theDaoTheme;
 
-        public DaoReservation(Dbal dbal, DaoReservation daoReservation)
+        public DaoReservation(Dbal dbal, DaoClient theDaoClient, DaoSalle theDaoSalle, DaoUtilisateur theDaoUtilisateur, DaoTheme theDaoTheme)
         {
-            this.mydbal = dbal;
-            this.theDaoReservation = daoReservation;
+            mydbal = dbal;
+            this.theDaoClient = theDaoClient;
+            this.theDaoSalle = theDaoSalle;
+            this.theDaoTheme = theDaoTheme;
+            this.theDaoUtilisateur = theDaoUtilisateur;
         }
 
         public void Insert(Reservation uneReservation)

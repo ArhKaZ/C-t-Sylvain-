@@ -13,16 +13,17 @@ using CsvHelper;
 using System.Globalization;
 namespace ModelLayer.Data
 {
-    class DaoSalle
+    public class DaoSalle
     {
         private Dbal mydbal;
         private DaoSalle theDaoSalle;
         private DaoVille theDaoVille;
         private DaoTheme theDaoTheme;
-        public DaoSalle(Dbal dbal, DaoSalle DaoSalle)
+        public DaoSalle(Dbal dbal, DaoVille theDaoVille, DaoTheme theDaoTheme)
         {
-            this.mydbal = dbal;
-            this.theDaoSalle = DaoSalle;
+            mydbal = dbal;
+            this.theDaoVille = theDaoVille;
+            this.theDaoTheme = theDaoTheme;
         }
 
         public void Insert(Salle uneSalle)
