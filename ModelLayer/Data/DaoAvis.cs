@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,22 +19,29 @@ namespace ModelLayer.Data
         private Dbal mydbal;
         private DaoAvis theDaoAvis;
 
-        public DaoAvis(Dbal mydbal)
+        private DaoClient theDaoCLient;
+        private DaoTheme theDaoTheme;
+
+        public DaoAvis(Dbal mydbal, DaoClient theDaoCLient, DaoTheme theDaoTheme)
         {
             this.mydbal = mydbal;
+            this.theDaoCLient = theDaoCLient;
+            this.theDaoTheme = theDaoTheme;
         }
 
 
-        public void Insert(Avis theAvis)
+        public void Insert(Avis theAvis, Client theClient, Theme theTheme)
         {
             string query = "Avis(id, idClient, note, commentaire, idTheme) VALUES ("
                 + theAvis.Id + ","
-                + theAvis.IdClient.Id + ","
+                + theClient.Id + ","
                 + theAvis.Note + ","
                 + theAvis.Commentaire + ","
-                + theAvis.IdTheme.Id + "')";
+                + theTheme.Id + "')";
             this.mydbal.Insert(query);
         }
+        //en commentaire le insertFromCSV
+        /*
 
         public void InsertFromCSV(string filename)
         {
@@ -55,13 +62,17 @@ namespace ModelLayer.Data
             }
         }
 
-        public void Update(Avis myAvis)
+        */
+
+
+        public void Update(Avis myAvis, Client myCLient, Theme myTheme)
         {
             string query = "Avis SET id = " + myAvis.Id
-                + ", idClient = " + myAvis.IdClient.Id
+                + ", idClient = " + myCLient.Id
                 + ", note =" + myAvis.Note
                 + ", commentaire = '" + myAvis.Commentaire.Replace("'", "''")
-                + "', idTheme = " + myAvis.IdTheme.Id
+                + "', idTheme = " + myTheme.Id
+
                 + "where id = " + myAvis.Id;
             this.mydbal.Update(query);
         }
@@ -74,7 +85,11 @@ namespace ModelLayer.Data
 
             foreach (DataRow r in myTable.Rows)
             {
-                listAvis.Add(new Avis((int)r["id"], (Client)r["idClient"], (int)r["note"], (string)r["commentaire"], (Theme)r["idTheme"]));
+
+                Client myClient = this.theDaoCLient.SelectById((int)r["id"]);
+                Theme myTheme = this.theDaoTheme.SelectById((int)r["id"]);
+                listAvis.Add(new Avis((int)r["id"], myClient, (int)r["note"], (string)r["commentaire"], myTheme));
+
             }
             return listAvis;
         }
@@ -82,8 +97,12 @@ namespace ModelLayer.Data
         public Avis SelectById(int id)
         {
             DataRow rowAvis = this.mydbal.SelectById("Avis", id);
+
+            Client myCLient = this.theDaoCLient.SelectById((int)rowAvis["id"]);
+            Theme myTheme = this.theDaoTheme.SelectById((int)rowAvis["id"]);
             Avis myAvis = this.theDaoAvis.SelectById((int)rowAvis["idClient"]);
-            return new Avis((int)rowAvis["id"], (Client)rowAvis["idClient"], (int)rowAvis["note"], (string)rowAvis["commentaire"], (Theme)rowAvis["idTheme"]);
+            return new Avis((int)rowAvis["id"], myCLient, (int)rowAvis["note"], (string)rowAvis["commentaire"], myTheme);
+
         }
 
         public void Delete(Avis unAvis)

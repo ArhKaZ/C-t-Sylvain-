@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -16,13 +16,17 @@ namespace ModelLayer.Data
         private Dbal mydbal;
         private DaoObstacle theDaoObstacle;
 
+        private DaoTheme theDaoTheme;
 
-        public DaoObstacle(Dbal dbal)
+
+        public DaoObstacle(Dbal dbal, DaoTheme theDaoTheme)
         {
             this.mydbal = dbal;
+            this.theDaoTheme = theDaoTheme;
         }
 
-        public void Insert(Obstacle theObstacle)
+        public void Insert(Obstacle theObstacle, Theme theTheme)
+
         {
             string query = "Obstacle(id, nom, photo, commentaire, difficulte, prix, theme) VALUES ("
                 + theObstacle.Id + ",'"
@@ -31,9 +35,11 @@ namespace ModelLayer.Data
                 + theObstacle.Commentaire + "',"
                 + theObstacle.Difficulte + ",'"
                 + theObstacle.Prix + ",'"
-                + theObstacle.IdTheme.Id + ")";
+
+                + theTheme.Id + ")";
             this.mydbal.Insert(query);
         }
+        /*
 
         public void InsertFromCSV(string filename)
         {
@@ -54,7 +60,10 @@ namespace ModelLayer.Data
             }
         }
 
-        public void Update(Obstacle myObstacle)
+        */
+
+        public void Update(Obstacle myObstacle, Theme myTheme)
+
         {
             string query = "Obstacle SET id= "
                 + myObstacle.Id
@@ -63,7 +72,9 @@ namespace ModelLayer.Data
                 + "', commentaire = '" + myObstacle.Commentaire
                 + "', difficulte = " + myObstacle.Difficulte
                 + ", prix = " + myObstacle.Prix
-                + ", theme = " + myObstacle.IdTheme.Id;
+
+                + ", theme = " + myTheme.Id;
+
 
             this.mydbal.Update(query);
 
@@ -76,7 +87,10 @@ namespace ModelLayer.Data
 
             foreach (DataRow r in myTable.Rows)
             {
-                listObstacle.Add(new Obstacle((int)r["id"], (string)r["nom"], (string)r["photo"], (string)r["commentaire"], (int)r["difficulte"], (int)r["prix"], (Theme)r["theme"]));
+
+                Theme myTheme = this.theDaoTheme.SelectById((int)r["id"]);
+                listObstacle.Add(new Obstacle((int)r["id"], (string)r["nom"], (string)r["photo"], (string)r["commentaire"], (int)r["difficulte"], (int)r["prix"], myTheme));
+
 
             }
             return listObstacle;
@@ -85,9 +99,10 @@ namespace ModelLayer.Data
         public Obstacle SelectById(int id)
         {
             DataRow rowObstacle = this.mydbal.SelectById("Obstacle", id);
-            Obstacle myObstacle = this.theDaoObstacle.SelectById((int)rowObstacle["nom"]);
 
-            return new Obstacle((int)rowObstacle["id"], (string)rowObstacle["nom"], (string)rowObstacle["photo"], (string)rowObstacle["commentaire"], (int)rowObstacle["difficulte"], (int)rowObstacle["prix"], (Theme)rowObstacle["theme"]);
+            Theme myTheme = this.theDaoTheme.SelectById((int)rowObstacle["id"]);
+            return new Obstacle((int)rowObstacle["id"], (string)rowObstacle["nom"], (string)rowObstacle["photo"], (string)rowObstacle["commentaire"], (int)rowObstacle["difficulte"], (int)rowObstacle["prix"], myTheme);
+
 
         }
 
@@ -95,7 +110,9 @@ namespace ModelLayer.Data
         {
             string search = "nom = '" + name + "'";
             DataTable tableObstacle = this.mydbal.SelectByField("Obstacle", search);
-            Obstacle myObstacle = this.theDaoObstacle.SelectById((int)tableObstacle.Rows[0]["nom"]);
+
+            Theme myTheme = this.theDaoTheme.SelectById((int)tableObstacle.Rows[0]["id"]);
+
             return new Obstacle((int)tableObstacle.Rows[0]["id"], (string)tableObstacle.Rows[0]["nom"], (string)tableObstacle.Rows[0]["photo"], (string)tableObstacle.Rows[0]["commentaire"], (int)tableObstacle.Rows[0]["difficulte"], (int)tableObstacle.Rows[0]["prix"], (Theme)tableObstacle.Rows[0]["theme"]);
 
         }

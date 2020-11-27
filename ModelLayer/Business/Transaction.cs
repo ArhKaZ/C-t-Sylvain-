@@ -22,6 +22,8 @@ namespace ModelLayer.Business
             Reservation = reservation;
             IdClient = idClient;
         }
+        
+        public Transaction(){}
 
         public int Id { get => id ; set => id = value; }
         public char Operation { get => operation; set => operation = value; }
