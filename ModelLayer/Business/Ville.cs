@@ -17,6 +17,8 @@ namespace ModelLayer.Business
             _id = id;
             _nom = nom;
         }
+        
+        public Ville(){}
         public int id { get => _id; set => _id = value; }
         public string nom { get => _nom; set => _nom = value; } 
     }
