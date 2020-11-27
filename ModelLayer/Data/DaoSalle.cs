@@ -4,13 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Business;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
 namespace ModelLayer.Data
 {
     class DaoSalle
     {
         private Dbal mydbal;
         private DaoSalle theDaoSalle;
-
+        private DaoVille theDaoVille;
+        private DaoTheme theDaoTheme;
         public DaoSalle(Dbal dbal, DaoSalle DaoSalle)
         {
             this.mydbal = dbal;
@@ -41,6 +49,28 @@ namespace ModelLayer.Data
         {
             string query = "Salle Where id = " + uneSalle.Id;
             this.mydbal.Delete(query);
+        }
+
+        public List<Salle> SelectAll()
+        {
+            List<Salle> listSalle = new List<Salle>();
+            DataTable myTable = this.mydbal.SelectAll("salle");
+
+            foreach (DataRow s in myTable.Rows)
+            {
+                Ville maVille = this.theDaoVille.SelectbyId((int)s["idLieu"]);
+                Theme monTheme = this.theDaoTheme.SelectById((int)s["idTheme"]);
+                listSalle.Add(new Salle((int)s["id"], maVille, monTheme));
+            }
+            return listSalle;
+        }
+
+        public Salle SelectById(int id)
+        {
+            DataRow rowSalle = this.mydbal.SelectById("salle", id);
+            Ville maVille = this.theDaoVille.SelectbyId((int)rowSalle["idLieu"]);
+            Theme monTheme = this.theDaoTheme.SelectById((int)rowSalle["idTheme"]);
+            return new Salle((int)rowSalle["id"], maVille, monTheme);
         }
     }
 }

@@ -22,5 +22,7 @@ namespace ModelLayer.Business
         public int Id { get => id; set => id = value; }
         public Ville IdLieu { get => idLieu; set => idLieu = value; }
         public Theme IdTheme { get => idTheme; set => idTheme = value; }
+        
+        public Salle() { }
     }
 }

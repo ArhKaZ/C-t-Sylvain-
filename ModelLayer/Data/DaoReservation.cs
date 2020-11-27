@@ -4,12 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Business;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
 namespace ModelLayer.Data
 {
     class DaoReservation
     {
         private Dbal mydbal;
         private DaoReservation theDaoReservation;
+        private DaoClient theDaoClient;
+        private DaoSalle theDaoSalle;
+        private DaoUtilisateur theDaoUtilisateur;
+        private DaoTheme theDaoTheme;
 
         public DaoReservation(Dbal dbal, DaoReservation daoReservation)
         {
@@ -50,6 +61,20 @@ namespace ModelLayer.Data
         {
             string query = "Reservation Where id = " + uneReservation.Id;
             this.mydbal.Delete(query);
+        }
+
+        public Reservation SelectbyId(int id)
+        {
+            DataRow rowReservation = this.mydbal.SelectById("resevation", id);
+            Client unCli = this.theDaoClient.SelectbyId((int)rowReservation["idClient"]);
+            Salle uneSalle = this.theDaoSalle.SelectById((int)rowReservation["idSalle"]);
+            Utilisateur unUtilisateur = this.theDaoUtilisateur.SelectbyId((int)rowReservation["idTechnicien"]);
+            Theme unTheme= this.theDaoTheme.SelectById((int)rowReservation["idTheme"]);
+            return new Reservation((int)rowReservation["id"],
+                (char)rowUtilisateur["role"],
+                maVille,
+                (string)rowUtilisateur["identifiant"],
+                (string)rowUtilisateur["mdp"]);
         }
     }
 }

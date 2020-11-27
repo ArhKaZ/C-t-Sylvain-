@@ -18,6 +18,7 @@ namespace ModelLayer.Data
     {
         private Dbal mydbal;
         private DaoUtilisateur theDaoUser;
+        private DaoVille theDaoVille;
 
         public DaoUtilisateur(Dbal dbal, DaoUtilisateur DaoUser)
         {
@@ -60,10 +61,11 @@ namespace ModelLayer.Data
 
             foreach (DataRow r in myTable.Rows)
             {
+                Ville maVille = this.theDaoVille.SelectbyId((int)r["idVille"]);
                 listUtilisateur.Add(new Utilisateur(
                     (int)r["id"],
                     (char)r["role"],
-                    (Ville)r["Ville"],
+                    maVille,
                     (string)r["identifiant"],
                     (string)r["mdp"]));
             }
@@ -73,7 +75,12 @@ namespace ModelLayer.Data
         public Utilisateur SelectbyId(int id)
         {
             DataRow rowUtilisateur = this.mydbal.SelectById("utilisateur", id);
-            return new Utilisateur((int)rowUtilisateur["id"],(char)rowUtilisateur["role"])
+            Ville maVille = this.theDaoVille.SelectbyId((int)rowUtilisateur["idVille"]);
+            return new Utilisateur((int)rowUtilisateur["id"],
+                (char)rowUtilisateur["role"],
+                maVille,
+                (string)rowUtilisateur["identifiant"],
+                (string)rowUtilisateur["mdp"]); 
         }
     }
 }

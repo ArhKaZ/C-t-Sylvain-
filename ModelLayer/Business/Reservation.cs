@@ -37,5 +37,7 @@ namespace ModelLayer.Business
         public Utilisateur IdTechnicien { get => idTechnicien; set => idTechnicien = value; }
         public int NbClient { get => nbClient; set => nbClient = value; }
         public Theme IdTheme { get => idTheme; set => idTheme = value; }
+
+        public Reservation() { }
     }
 }

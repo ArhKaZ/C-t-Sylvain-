@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Business;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
 namespace ModelLayer.Data
 {
     class DaoTheme
@@ -38,6 +45,24 @@ namespace ModelLayer.Data
         {
             string query = "Theme Where id = " + unTheme.Id;
             this.mydbal.Delete(query);
+        }
+
+        public List<Theme> SelectAll()
+        {
+            List<Theme> listTheme = new List<Theme>();
+            DataTable myTable = this.mydbal.SelectAll("Theme");
+
+            foreach (DataRow t in myTable.Rows)
+            {
+                listTheme.Add(new Theme((int)t["id"], (string)t["nom"]));
+            }
+            return listTheme;
+        }
+        
+        public Theme SelectById(int id)
+        {
+            DataRow rowTheme = this.mydbal.SelectById("theme", id);
+            return new Theme((int)rowTheme["id"], (string)rowTheme["nom"]);
         }
     }
 }
