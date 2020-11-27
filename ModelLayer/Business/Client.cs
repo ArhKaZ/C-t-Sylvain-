@@ -30,6 +30,8 @@ namespace ModelLayer.Business
             _photo = photo;
             _nbpartie = nbpartie;
         }
+        
+        public Client(){}
 
         public int id { get => _id; set => _id = value; }
         public string prenom { get => _prenom; set => _prenom = value; }
