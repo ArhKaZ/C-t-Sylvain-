@@ -39,6 +39,9 @@ namespace PPE
             theDaoTransaction = new DaoTransaction(mydbal, theDaoClient, theDaoReservation);
             theDaoUtilisateur = new DaoUtilisateur(mydbal, theDaoVille);
             theDaoVille = new DaoVille(mydbal);
+
+            MainWindow wnd = new MainWindow(theDaoAvis, theDaoClient, theDaoObstacle, theDaoPObstacle, theDaoReservation, theDaoSalle, theDaoTheme, theDaoTransaction, theDaoUtilisateur, theDaoVille);
+            wnd.Show();
         }
     }
 }

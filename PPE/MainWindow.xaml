@@ -59,7 +59,7 @@
                     <TextBlock x:Name="Txt_CreditC" Grid.Column="1" Grid.Row="3" Height="40" Width="300" Background="#FFD3E9F7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,50,250,0" Grid.ColumnSpan="2"/>
                     <TextBlock x:Name="Txt_Def3" Grid.Column="2" Grid.Row="2" Height="30" Width="175" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Nombre de partie :" Grid.ColumnSpan="2"/>
                     <TextBlock x:Name="Txt_NbGameC" Grid.Column="2" Grid.Row="2" Height="40" Width="300" Background="#FFD3E9F7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="165,40,0,0" Grid.ColumnSpan="2"/>
-                    
+
                     <TextBlock x:Name="Txt_NomRc2" Grid.Column="2" Grid.Row="5" Height="40" Width="220" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Text="Créditer / Débiter " FontSize="25" FontWeight="Bold"/>
                     <Rectangle x:Name="Rc_Change" Grid.Column="1" Grid.Row="5" Stroke="Black" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
                     <TextBlock x:Name="Txt_Def4" Grid.Column="1" Grid.Row="6" Height="30" Width="90" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,170,50" Text="Montant : "/>

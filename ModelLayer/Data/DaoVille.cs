@@ -22,7 +22,6 @@ namespace ModelLayer.Data
         public DaoVille(Dbal dbal)
         {
             mydbal = dbal;
-            
         }
 
         public void Insert(Ville uneVille)
