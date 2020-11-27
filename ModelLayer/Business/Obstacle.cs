@@ -14,7 +14,7 @@ namespace ModelLayer.Business
         private string commentaire;
         private int difficulte;
         private int prix;
-        private Theme idTheme;
+        private Theme theme;
 
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
@@ -22,7 +22,7 @@ namespace ModelLayer.Business
         public string Commentaire { get => commentaire; set => commentaire = value; }
         public int Difficulte { get => difficulte; set => difficulte = value; }
         public int Prix { get => prix; set => prix = value; }
-        public Theme IdTheme { get => idTheme; set => idTheme = value; }
+        public Theme Theme { get => theme; set => theme = value; }
 
         public Obstacle(int id, string nom, string photo, string commentaire, int difficulté, int prix, Theme unTheme)
         {
@@ -32,7 +32,7 @@ namespace ModelLayer.Business
             Commentaire = commentaire;
             Difficulte = difficulté;
             Prix = prix;
-            IdTheme = unTheme;
+            Theme = unTheme;
         }
 
         public Obstacle()

@@ -21,16 +21,18 @@ namespace ModelLayer.Business
         public string Commentaire { get => commentaire; set => commentaire = value; }
         public Theme IdTheme { get => idTheme; set => idTheme = value; }
 
-        public Avis(int id, Client client, int note, string commentaire, Theme unTheme)
+        public Avis(int id, Client client, int note, string commentaire, Theme Theme)
         {
             Id = id;
             IdClient = client;
             Note = note;
             Commentaire = commentaire;
-            IdTheme = unTheme;
+            IdTheme = Theme;
         }
 
-        public Avis() { }
-        
+        public Avis()
+        {
+
+        }
     }
 }

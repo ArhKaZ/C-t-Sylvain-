@@ -8,19 +8,25 @@ namespace ModelLayer.Business
 {
     class Placement_Obstacle
     {
-        private int _num_placement;
-        private int _reservation;
-        private int _obstacle;
+        private int num_placement;
+        private Reservation reservation;
+        private Obstacle obstacle;
 
-        public Placement_Obstacle(int num_placement, int reservation, int obstacle)
+        public int Num_placement { get => num_placement; set => num_placement = value; }
+        internal Reservation Reservation { get => reservation; set => reservation = value; }
+        internal Obstacle Obstacle { get => obstacle; set => obstacle = value; }
+
+
+        public Placement_Obstacle(int num_placement, Reservation reservation, Obstacle obstacle)
         {
-            _num_placement = num_placement;
-            _reservation = reservation;
-            _obstacle = obstacle;
+            Num_placement = num_placement;
+            Reservation = reservation;
+            Obstacle = Obstacle;
         }
 
-        public int num_placement { get => _num_placement; set => _num_placement = value; }
-        public int reservation { get => _reservation; set => _reservation = value; }
-        public int obstalce { get => _obstacle; set => _obstacle = value; }
+        public Placement_Obstacle()
+        {
+
+        }
     }
 }
