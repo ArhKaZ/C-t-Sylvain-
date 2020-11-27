@@ -66,15 +66,41 @@ namespace ModelLayer.Data
         public Reservation SelectbyId(int id)
         {
             DataRow rowReservation = this.mydbal.SelectById("resevation", id);
-            Client unCli = this.theDaoClient.SelectbyId((int)rowReservation["idClient"]);
+            Client unCli = this.theDaoClient.SelectById((int)rowReservation["idClient"]);
             Salle uneSalle = this.theDaoSalle.SelectById((int)rowReservation["idSalle"]);
             Utilisateur unUtilisateur = this.theDaoUtilisateur.SelectbyId((int)rowReservation["idTechnicien"]);
-            Theme unTheme= this.theDaoTheme.SelectById((int)rowReservation["idTheme"]);
-            return new Reservation((int)rowReservation["id"],
-                (char)rowUtilisateur["role"],
-                maVille,
-                (string)rowUtilisateur["identifiant"],
-                (string)rowUtilisateur["mdp"]);
+            Theme unTheme = this.theDaoTheme.SelectById((int)rowReservation["idTheme"]);
+            return new Reservation((DateTime)rowReservation["dateRes"],
+                (int)rowReservation["id"],
+                unCli,
+                uneSalle,
+                (int)rowReservation["prix"],
+                unUtilisateur,
+                (int)rowReservation["nbClient"],
+                unTheme);
+        }
+
+        public List<Reservation> SelectAll()
+        {
+            List<Reservation> listUtilisateur = new List<Reservation>();
+            DataTable myTable = this.mydbal.SelectAll("Utilisateur");
+
+            foreach (DataRow r in myTable.Rows)
+            {
+                Client unCli = this.theDaoClient.SelectById((int)r["idClient"]);
+                Salle uneSalle = this.theDaoSalle.SelectById((int)r["idSalle"]);
+                Utilisateur unUtilisateur = this.theDaoUtilisateur.SelectbyId((int)r["idTechnicien"]);
+                Theme unTheme = this.theDaoTheme.SelectById((int)r["idTheme"]);
+                listUtilisateur.Add(new Reservation((DateTime)r["dateRes"],
+                (int)r["id"],
+                unCli,
+                uneSalle,
+                (int)r["prix"],
+                unUtilisateur,
+                (int)r["nbClient"],
+                unTheme));
+            }
+            return listUtilisateur;
         }
     }
 }
