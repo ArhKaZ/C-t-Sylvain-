@@ -18,6 +18,8 @@ namespace ModelLayer.Business
             _reservation = reservation;
             _obstacle = obstacle;
         }
+        
+        public Placement_Obstacle(){}
 
         public int num_placement { get => _num_placement; set => _num_placement = value; }
         public int reservation { get => _reservation; set => _reservation = value; }
