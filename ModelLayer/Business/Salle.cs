@@ -18,6 +18,8 @@ namespace ModelLayer.Business
             _idLieu = idLieu;
             _idTheme = idTheme;
         }
+        
+        public Salle(){}
 
         public int id { get => _id; set => _id = value; }
         public int idLieu { get => _idLieu; set => _idLieu = value; }
