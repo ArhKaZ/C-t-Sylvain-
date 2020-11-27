@@ -26,6 +26,8 @@ namespace ModelLayer.Business
             _prix = prix;
             _theme = theme;
         }
+        
+        public Obstacle(){}
 
         public int id { get => _id; set => _id = value; }
         public string photo { get => _photo; set => _photo = value; }
