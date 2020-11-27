@@ -40,7 +40,7 @@ namespace ModelLayer.Data
 
         public void Update(Utilisateur unUser)
         {
-            string query = "Utilisateur Set id= " + unUser.Id
+            string query = "Utilisateur Set id= " + unUser.Id 
                 + ", role = '" + unUser.Role
                 + ", ville = " + unUser.Ville.Id
                 + ", identifiant = '" + unUser.Identifiant.Replace("'", "''")
