@@ -23,6 +23,8 @@ namespace ModelLayer.Business
             Identifiant = identifiant;
             Mdp = mdp;
         }
+        
+        public Utilisateur(){}
 
         public int Id { get => id; set => id = value; }
         public char Role { get => role; set => role = value; }

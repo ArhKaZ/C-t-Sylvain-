@@ -34,6 +34,8 @@ namespace ModelLayer.Business
             Prix = prix;
             Theme = unTheme;
         }
+        
+        public Obstacle(){}
 
         public Obstacle()
         {

@@ -40,6 +40,8 @@ namespace ModelLayer.Business
             Photo = photo;
             Nbpartie = nbpartie;
         }
+        
+        public Client(){}
 
         public Client()
         { }

@@ -29,6 +29,8 @@ namespace ModelLayer.Business
             Commentaire = commentaire;
             IdTheme = Theme;
         }
+        
+        public Avis(){}
 
         public Avis()
         {

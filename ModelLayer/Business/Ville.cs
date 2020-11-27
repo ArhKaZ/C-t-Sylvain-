@@ -17,7 +17,12 @@ namespace ModelLayer.Business
             this.Id = id;
             this.Nom = nom;
         }
+
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; } 
+
+        
+        public Ville(){}
+
     }
 }

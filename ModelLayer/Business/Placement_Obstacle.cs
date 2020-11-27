@@ -23,6 +23,8 @@ namespace ModelLayer.Business
             Reservation = reservation;
             Obstacle = Obstacle;
         }
+        
+        public Placement_Obstacle(){}
 
         public Placement_Obstacle()
         {

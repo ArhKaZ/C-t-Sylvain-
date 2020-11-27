@@ -29,6 +29,7 @@ namespace ModelLayer.Business
             NbClient = nbClient;
             IdTheme = idTheme;
         }
+
         public DateTime DateRes { get => dateRes; set => dateRes = value; }
         public int Id { get => id; set => id = value; }
         public Client IdClient { get => idClient; set => idClient = value; }
@@ -39,5 +40,8 @@ namespace ModelLayer.Business
         public Theme IdTheme { get => idTheme; set => idTheme = value; }
 
         public Reservation() { }
+
+        
+       
     }
 }
