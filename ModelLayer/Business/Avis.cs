@@ -22,6 +22,8 @@ namespace ModelLayer.Business
             _commentaire = commentaire;
             _idTheme = idTheme;
         }
+        
+        public Avis(){}
 
         public int id { get => _id ; set => _id = value; }
         public int idClient { get => _idClient ; set => _idClient = value ; }
