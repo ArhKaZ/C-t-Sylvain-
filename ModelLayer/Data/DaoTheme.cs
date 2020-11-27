@@ -13,15 +13,15 @@ using CsvHelper;
 using System.Globalization;
 namespace ModelLayer.Data
 {
-    class DaoTheme
+    public class DaoTheme
     {
         private Dbal mydbal;
         private DaoTheme theDaoTheme;
 
-        public DaoTheme(Dbal dbal, DaoTheme DaoTheme)
+        public DaoTheme(Dbal dbal)
         {
-            this.mydbal = dbal;
-            this.theDaoTheme = DaoTheme;
+            mydbal = dbal;
+           
         }
 
         public void Insert(Theme unTheme)

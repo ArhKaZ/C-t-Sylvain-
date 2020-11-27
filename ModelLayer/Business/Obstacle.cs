@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Obstacle
+    public class Obstacle
     {
         private int id;
         private string nom;

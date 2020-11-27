@@ -13,17 +13,18 @@ using CsvHelper;
 using System.Globalization;
 namespace ModelLayer.Data
 {
-    class DaoTransaction
+    public class DaoTransaction
     {
         private Dbal mydbal;
         private DaoTransaction theDaoTransaction;
         private DaoClient theDaoClient;
         private DaoReservation theDaoReservation;
 
-        public DaoTransaction(Dbal mydbal, DaoTransaction theDaoTransaction)
+        public DaoTransaction(Dbal mydbal, DaoClient theDaoClient, DaoReservation theDaoReservation)
         {
             this.mydbal = mydbal;
-            this.theDaoTransaction = theDaoTransaction;
+            this.theDaoClient = theDaoClient;
+            this.theDaoReservation = theDaoReservation;
         }
 
         public void Insert(Transaction uneTransac)
@@ -61,7 +62,7 @@ namespace ModelLayer.Data
             foreach (DataRow r in rowTransaction.Rows)
             {
                 Client unCli = this.theDaoClient.SelectById((int)r["idClient"]);
-                Reservation uneReserv = this.theDaoReservation.SelectById((int)r["idReservation"]);
+                Reservation uneReserv = this.theDaoReservation.SelectbyId((int)r["idReservation"]);
                 listTransaction.Add(new Transaction((int)r["id"], (char)r["operation"], (int)r["montant"], uneReserv, unCli));
             }
             return listTransaction;
@@ -70,7 +71,7 @@ namespace ModelLayer.Data
         public Transaction SelectById(int id)
         {
             DataRow rowTransaction = this.mydbal.SelectById("transactions", id);
-            Reservation uneResevation = this.theDaoReservation.SelectById((int)rowTransaction["reservation"]);
+            Reservation uneResevation = this.theDaoReservation.SelectbyId((int)rowTransaction["reservation"]);
             Client unCli = this.theDaoClient.SelectById((int)rowTransaction["idClient"]);
             return new Transaction((int)rowTransaction["id"],
                 (char)rowTransaction["operation"],

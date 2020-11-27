@@ -11,11 +11,10 @@ using ModelLayer.Business;
 
 namespace ModelLayer.Data
 {
-    class DaoObstacle
+    public class DaoObstacle
     {
         private Dbal mydbal;
         private DaoObstacle theDaoObstacle;
-
         private DaoTheme theDaoTheme;
 
 

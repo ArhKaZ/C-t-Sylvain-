@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Placement_Obstacle
+    public class Placement_Obstacle
     {
         private int num_placement;
         private Reservation reservation;
