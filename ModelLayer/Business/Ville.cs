@@ -6,20 +6,23 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Ville
+    public class Ville
     {
 
-        private int _id;
-        private string _nom;
+        private int id;
+        private string nom;
 
         public Ville(int id, string nom)
         {
-            _id = id;
-            _nom = nom;
+            this.Id = id;
+            this.Nom = nom;
         }
+
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; } 
+
         
         public Ville(){}
-        public int id { get => _id; set => _id = value; }
-        public string nom { get => _nom; set => _nom = value; } 
+
     }
 }

@@ -6,39 +6,42 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Business
 {
-    class Reservation
+    public class Reservation
     {
 
-        private DateTime _dateRes;
-        private int _id;
-        private int _idClient;
-        private int _idSalle;
-        private int _prix;
-        private int _idTechnicien;
-        private int _nbClient;
-        private int _idTheme;
+        private DateTime dateRes;
+        private int id;
+        private Client idClient;
+        private Salle idSalle;
+        private int prix;
+        private Utilisateur idTechnicien;
+        private int nbClient;
+        private Theme idTheme;
 
-        public Reservation(DateTime dateRes, int id, int idClient, int idSalle, int prix, int idTechnicien, int nbClient, int idTheme)
+        public Reservation(DateTime dateRes, int id, Client idClient, Salle idSalle, int prix, Utilisateur idTechnicien, int nbClient, Theme idTheme)
         {
-            _dateRes = dateRes;
-            _id = id;
-            _idClient = idClient;
-            _idSalle = idSalle;
-            _prix = prix;
-            _idTechnicien = idTechnicien;
-            _nbClient = nbClient;
-            _idTheme = idTheme;
+            DateRes = dateRes;
+            Id = id;
+            IdClient = idClient;
+            IdSalle = idSalle;
+            Prix = prix;
+            IdTechnicien = idTechnicien;
+            NbClient = nbClient;
+            IdTheme = idTheme;
         }
+
+        public DateTime DateRes { get => dateRes; set => dateRes = value; }
+        public int Id { get => id; set => id = value; }
+        public Client IdClient { get => idClient; set => idClient = value; }
+        public Salle IdSalle { get => idSalle; set => idSalle = value; }
+        public int Prix { get => prix; set => prix = value; }
+        public Utilisateur IdTechnicien { get => idTechnicien; set => idTechnicien = value; }
+        public int NbClient { get => nbClient; set => nbClient = value; }
+        public Theme IdTheme { get => idTheme; set => idTheme = value; }
+
+        public Reservation() { }
+
         
-        public Reservation(){}
-        
-        public DateTime dateRes { get => _dateRes; set => _dateRes = value; }
-        public int id { get => _id; set => _id = value; }
-        public int idClient { get => _idClient; set => _idClient = value; }
-        public int idSalle { get => _idSalle; set => _idSalle = value; }
-        public int prix { get => _prix; set => _prix = value; }
-        public int idTechnicien { get => _idTechnicien; set => _idTechnicien = value; }
-        public int nbClient { get => _nbClient; set => _nbClient = value; }
-        public int idTheme { get => _idTheme; set => _idTheme = value; }
+       
     }
 }

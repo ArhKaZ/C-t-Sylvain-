@@ -8,32 +8,38 @@ namespace ModelLayer.Business
 {
     class Obstacle
     {
-        private int _id;
-        private string _nom;
-        private string _photo;
-        private string _commentaire;
-        private int _difficulte;
-        private int _prix;
-        private int _theme;
+        private int id;
+        private string nom;
+        private string photo;
+        private string commentaire;
+        private int difficulte;
+        private int prix;
+        private Theme theme;
 
-        public Obstacle(int id, string nom, string photo, string commentaire, int difficulte, int prix, int theme)
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; }
+        public string Photo { get => photo; set => photo = value; }
+        public string Commentaire { get => commentaire; set => commentaire = value; }
+        public int Difficulte { get => difficulte; set => difficulte = value; }
+        public int Prix { get => prix; set => prix = value; }
+        public Theme Theme { get => theme; set => theme = value; }
+
+        public Obstacle(int id, string nom, string photo, string commentaire, int difficulté, int prix, Theme unTheme)
         {
-            _id = id;
-            _nom = nom;
-            _photo = photo;
-            _commentaire = commentaire;
-            _difficulte = difficulte;
-            _prix = prix;
-            _theme = theme;
+            Id = id;
+            Nom = nom;
+            Photo = photo;
+            Commentaire = commentaire;
+            Difficulte = difficulté;
+            Prix = prix;
+            Theme = unTheme;
         }
         
         public Obstacle(){}
 
-        public int id { get => _id; set => _id = value; }
-        public string photo { get => _photo; set => _photo = value; }
-        public string commentaire { get => _commentaire; set => _commentaire = value; }
-        public int difficulte { get => _difficulte; set => _difficulte = value; }
-        public int prix { get => _prix; set => _prix = value; }
-        public int theme { get => _theme; set => _theme = value; }
+        public Obstacle()
+        {
+
+        }
     }
 }

@@ -3,32 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLayer.Data;
 
 namespace ModelLayer.Business
 {
-    class Avis
+    public class Avis
     {
-        private int _id;
-        private int _idClient;
-        private int _note;
-        private string _commentaire;
-        private int _idTheme;
+        private int id;
+        private Client idClient;
+        private int note;
+        private string commentaire;
+        private Theme idTheme;
 
-        public Avis(int id, int idClient, int note, string commentaire, int idTheme)
+        public int Id { get => id; set => id = value; }
+        public Client IdClient { get => idClient; set => idClient = value; }
+        public int Note { get => note; set => note = value; }
+        public string Commentaire { get => commentaire; set => commentaire = value; }
+        public Theme IdTheme { get => idTheme; set => idTheme = value; }
+
+        public Avis(int id, Client client, int note, string commentaire, Theme Theme)
         {
-            _id = id;
-            _idClient = idClient;
-            _note = note;
-            _commentaire = commentaire;
-            _idTheme = idTheme;
+            Id = id;
+            IdClient = client;
+            Note = note;
+            Commentaire = commentaire;
+            IdTheme = Theme;
         }
         
         public Avis(){}
 
-        public int id { get => _id ; set => _id = value; }
-        public int idClient { get => _idClient ; set => _idClient = value ; }
-        public int note { get => _note; set => _note = value; }
-        public string commentaire { get => _commentaire; set => _commentaire = value; }
-        public int idTheme { get => _idTheme; set => _idTheme = value; }
+        public Avis()
+        {
+
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace ModelLayer.Data
     {
         private Dbal mydbal;
         private DaoAvis theDaoAvis;
+
         private DaoClient theDaoCLient;
         private DaoTheme theDaoTheme;
 
@@ -41,6 +42,7 @@ namespace ModelLayer.Data
         }
         //en commentaire le insertFromCSV
         /*
+
         public void InsertFromCSV(string filename)
         {
             using (var reader = new StreamReader(filename))
@@ -59,6 +61,7 @@ namespace ModelLayer.Data
                 }
             }
         }
+
         */
 
 
@@ -69,6 +72,7 @@ namespace ModelLayer.Data
                 + ", note =" + myAvis.Note
                 + ", commentaire = '" + myAvis.Commentaire.Replace("'", "''")
                 + "', idTheme = " + myTheme.Id
+
                 + "where id = " + myAvis.Id;
             this.mydbal.Update(query);
         }
@@ -81,9 +85,11 @@ namespace ModelLayer.Data
 
             foreach (DataRow r in myTable.Rows)
             {
+
                 Client myClient = this.theDaoCLient.SelectById((int)r["id"]);
                 Theme myTheme = this.theDaoTheme.SelectById((int)r["id"]);
                 listAvis.Add(new Avis((int)r["id"], myClient, (int)r["note"], (string)r["commentaire"], myTheme));
+
             }
             return listAvis;
         }
@@ -91,10 +97,12 @@ namespace ModelLayer.Data
         public Avis SelectById(int id)
         {
             DataRow rowAvis = this.mydbal.SelectById("Avis", id);
+
             Client myCLient = this.theDaoCLient.SelectById((int)rowAvis["id"]);
             Theme myTheme = this.theDaoTheme.SelectById((int)rowAvis["id"]);
             Avis myAvis = this.theDaoAvis.SelectById((int)rowAvis["idClient"]);
             return new Avis((int)rowAvis["id"], myCLient, (int)rowAvis["note"], (string)rowAvis["commentaire"], myTheme);
+
         }
 
         public void Delete(Avis unAvis)
