@@ -26,16 +26,19 @@ namespace PPE.viewModel
             get => leCli;
             set
             {
-                if (leCli != value) 
-                OnPropertyChanged("Client");
-                OnPropertyChanged("Nom");
-                OnPropertyChanged("Prenom");
-                OnPropertyChanged("Telephone");
-                OnPropertyChanged("Mail");
-                OnPropertyChanged("Credit");
-                OnPropertyChanged("DateNaissance");
-                OnPropertyChanged("Photo");
-                OnPropertyChanged("NbPartie");
+                if (leCli != value)
+                {
+                    leCli = value;
+                    OnPropertyChanged("Client");
+                    OnPropertyChanged("Nom");
+                    OnPropertyChanged("Prenom");
+                    OnPropertyChanged("Telephone");
+                    OnPropertyChanged("Mail");
+                    OnPropertyChanged("Credit");
+                    OnPropertyChanged("DateNaissance");
+                    OnPropertyChanged("Photo");
+                    OnPropertyChanged("NbPartie");
+                }
             }
         }
         public viewModelClient(DaoClient theDaoClient)
