@@ -28,18 +28,9 @@ namespace PPE
             //Finir le tuto : https://www.c-sharpcorner.com/UploadFile/mahesh/datagrid-in-wpf/#:~:text=WPF%20DataGrid.,display%20data%20from%20a%20collection.&text=In%20this%20article%2C%20you%20will,load%20data%20from%20a%20collection
             InitializeComponent();
             Grid_Clients.DataContext = new viewModelClient(theDaoClient);
-            Grid_Credits.DataContext = new viewModelCredits(th)
+           // Grid_Credits.DataContext = new viewModelCredits();
         }
         
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

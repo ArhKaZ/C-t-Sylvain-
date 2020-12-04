@@ -16,8 +16,6 @@ namespace ModelLayer.Data
 
         private Dbal theDbal;
 
-        private DaoClient theDaoClient;
-
         public DaoClient(Dbal dbal)
         {
 
@@ -27,15 +25,20 @@ namespace ModelLayer.Data
 
         public void Insert(Client theClient)
         {
-            string query = "Client(id, nom, prenom, telephone, mail, credit, dateNaissance, photo, NbPartie) VALUES ("
-                + theClient.Id + ",'"
+            int id = 0;
+            List<Client> listC = new List<Client>(SelectAll());
+            foreach(Client c in listC)
+            {
+                id = id + 1;
+            }
+            string query = "Clients(id, nom, prenom, telephone, mail, credit, dateNaissance, NbPartie) VALUES ("
+                + id + ",'"
                 + theClient.Nom + "','"
                 + theClient.Prenom + "',"
                 + theClient.Telephone + ",'"
                 + theClient.Mail + "',"
                 + theClient.Credit + ",'"
-                + theClient.DateNaissance + "',"
-                + theClient.Photo + ","
+                + theClient.DateNaissance.ToString("yyyy-MM-dd") + "',"
                 + theClient.Nbpartie + ")";
 
             this.theDbal.Insert(query);
@@ -65,7 +68,7 @@ namespace ModelLayer.Data
 
         public void Update(Client myCLient)
         {
-            string query = "Client SET id = " + myCLient.Id
+            string query = "Clients SET id = " + myCLient.Id
             + ", nom = '" + myCLient.Nom
             + "', prenom = '" + myCLient.Photo
             + "', telephone =" + myCLient.Telephone
@@ -89,7 +92,7 @@ namespace ModelLayer.Data
             foreach (DataRow r in myTable.Rows)
 
             {
-                listClient.Add(new Client((int)r["id"], (string)r["nom"], (string)r["prenom"], (int)r["telephone"], (string)r["mail"], (int)r["credit"], (DateTime)r["dateNaissance"], (string)r["photo"], (int)r["NbPartie"]));
+                listClient.Add(new Client((int)r["id"], (string)r["nom"], (string)r["prenom"], (int)r["telephone"], (string)r["mail"], (int)r["credit"], (DateTime)r["dateNaissance"], (int)r["NbPartie"]));
             }
             return listClient;
         }
@@ -98,10 +101,7 @@ namespace ModelLayer.Data
         {
 
             DataRow rowClient = this.theDbal.SelectById("Clients", id);
-            Client myCLient = this.theDaoClient.SelectById((int)rowClient["nom"]);
-
-
-            return new Client((int)rowClient["id"], (string)rowClient["nom"], (string)rowClient["prenom"], (int)rowClient["telephone"], (string)rowClient["mail"], (int)rowClient["credit"], (DateTime)rowClient["dateNaissance"], (string)rowClient["photo"], (int)rowClient["NbPartie"]);
+            return new Client((int)rowClient["id"], (string)rowClient["nom"], (string)rowClient["prenom"], (int)rowClient["telephone"], (string)rowClient["mail"], (int)rowClient["credit"], (DateTime)rowClient["dateNaissance"], (int)rowClient["NbPartie"]);
         }
 
         public Client SelectByName(string name)
@@ -109,20 +109,14 @@ namespace ModelLayer.Data
             string search = "nom = '" + name + "'";
 
             DataTable tableClient = this.theDbal.SelectByField("Clients", search);
-
-            Client myClient = this.theDaoClient.SelectById((int)tableClient.Rows[0]["nom"]);
-            return new Client((int)tableClient.Rows[0]["id"], (string)tableClient.Rows[0]["nom"], (string)tableClient.Rows[0]["prenom"], (int)tableClient.Rows[0]["telephone"], (string)tableClient.Rows[0]["mail"], (int)tableClient.Rows[0]["credit"], (DateTime)tableClient.Rows[0]["dateNaissance"], (string)tableClient.Rows[0]["photo"], (int)tableClient.Rows[0]["NbPartie"]);
+            return new Client((int)tableClient.Rows[0]["id"], (string)tableClient.Rows[0]["nom"], (string)tableClient.Rows[0]["prenom"], (int)tableClient.Rows[0]["telephone"], (string)tableClient.Rows[0]["mail"], (int)tableClient.Rows[0]["credit"], (DateTime)tableClient.Rows[0]["dateNaissance"], (int)tableClient.Rows[0]["NbPartie"]);
         }
 
         public void Delete(Client unCLient)
         {
-            string query = " Clients where name = '" + unCLient.Id + "';";
-
+            string query = " Clients where id = " + unCLient.Id ;
 
             this.theDbal.Delete(query);
-
-
-
 
         }
     }

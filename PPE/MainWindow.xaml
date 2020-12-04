@@ -8,24 +8,51 @@
         Title="Logiciel de comptabilité" Height="1080" Width="1920">
     <Grid>
 
-        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="2" FontSize="20" BorderBrush="#FFE5E5EA" Background="White" SelectionChanged="TabControl_SelectionChanged_1">
+        <TabControl TabStripPlacement="Top" Grid.ColumnSpan="2" FontSize="20" BorderBrush="#FFE5E5EA" Background="White">
             <TabItem Header="Clients" Height="50" Width="100">
                 <Grid x:Name="Grid_Clients">
                     <Grid.ColumnDefinitions>
-                        
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+
+                        <ColumnDefinition Width ="5*"/>
+                        <ColumnDefinition Width ="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="90"/>
-                        <RowDefinition Height="7* "/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <ListBox x:Name="Lst_Clients" Grid.Row="1" Grid.Column="0" BorderBrush="Black" Background="#FFD3E9F7"/>
-                    <TextBlock x:Name="Txt_Def10" Grid.Column="1" Grid.Row="0" Height="30" Width="110" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="330,30,0,0" Text="Rechercher : "/>
-                    <TextBox x:Name="Txt_SearchC" Grid.Column="1" Grid.Row="0" Width="350" Height="40" HorizontalAlignment="Right" Background="#FFD3E9F7" FontSize="30" Margin="0,25" />
-                    <ListBox x:Name="Lst_InfoClient" Grid.Row="1" Grid.Column="1" Background="#FFE8F0F5" Margin="20"/>
-                    <Button x:Name="Btn_Modif" Grid.Row="2" Grid.Column="2" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Modifier" FontSize="30" Margin="0,26,0,27"/>
+                    <ListBox x:Name="Lst_Clients" SelectedItem="{Binding Client}" IsSynchronizedWithCurrentItem="True" Grid.RowSpan="8" ItemsSource="{Binding ListClient}" Grid.Row="1" Grid.Column="0" BorderBrush="Black" />
+                    <Rectangle x:Name="Rc" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="8" Stroke="Black"/>
+                    <TextBlock x:Name="Txt_Def10" Grid.Column="1" Grid.Row="0" Height="30" Width="110" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="150,30,0,0" Text="Rechercher : "/>
+                    <TextBox x:Name="Txt_SearchC" Text="{Binding Recherche}" Grid.Column="2"  Grid.Row="0" Width="250" Height="40" HorizontalAlignment="Left" Background="#FFD3E9F7" FontSize="30" Margin="0,25" />
+                    <Button x:Name="Btn_Modif" Command="{Binding UpdateCommand}" Grid.Row="8" Grid.Column="2" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Modifier" FontSize="30" Margin="0,26,0,27"/>
+                    <TextBlock x:Name="Txt_Info" Grid.Column="2" Grid.Row="1" Text="    Informations" Width="200" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+                    <TextBlock x:Name="Txt_Def13" Grid.Column="1" Grid.Row="2" Height="30" Width="60" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Nom : "/>
+                    <TextBox x:Name="Txt_Nom" Grid.Column="1" Grid.Row="2" Text="{Binding Nom}" Height="40" Width="200" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <TextBlock x:Name="Txt_Def14" Grid.Column="2" Grid.Row="2" Height="30" Width="80" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Prenom : "/>
+                    <TextBox x:Name="Txt_Prenom" Grid.Column="2" Grid.Row="2" Text ="{Binding Prenom}" Height="40" Width="200" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <TextBlock x:Name="Txt_Def15" Grid.Column="3" Grid.Row="2" Height="30" Width="100" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Téléphone : "/>
+                    <TextBox x:Name="Txt_Telephone" Grid.Column="3" Grid.Row="2" Height="40" Width="200" Text="{Binding Telephone}" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <TextBlock x:Name="Txt_Def16" Grid.Column="1" Grid.Row="4" Height="30" Width="60" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Mail : "/>
+                    <TextBox x:Name="Txt_Mail" Grid.Column="1" Grid.Row="4" Text="{Binding Mail}" Height="40" Width="200" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <TextBlock x:Name="Txt_Def17" Grid.Column="2" Grid.Row="4" Height="30" Width="60" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Crédit : "/>
+                    <TextBox x:Name="Txt_Credit" Grid.Column="2" Grid.Row="4" Height="40" Text="{Binding Credit}" Width="200" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <TextBlock x:Name="Txt_Def18" Grid.Column="3" Grid.Row="4" Height="30" Width="170" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Date de naissance : "/>
+                    <DatePicker x:Name="Txt_Datenaissance" Grid.Column="3" Grid.Row="4" Height="40" Width="200" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <Image Grid.Column="1" HorizontalAlignment="Left" Source="{Binding Photo}" Height="200" Margin="74,0,0,0" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Top" Width="200"/>
+                    <TextBlock x:Name="Txt_Def19" Grid.Column="3" Grid.Row="6" Height="30" Width="169" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" Text="Nombre de partie : "/>
+                    <TextBlock x:Name="Txt_NbPartie" Grid.Column="3" Grid.Row="6" Height="40" Width="200" Text="{Binding NbPartie}" Background="#FFD3E9F7" VerticalAlignment="Top" Margin="0,50,0,0 " HorizontalAlignment="Stretch"  />
+                    <Button x:Name="Btn_InsertClient" Command="{Binding InsertCommand}" Grid.Row="8" Grid.Column="1" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Ajouter" FontSize="30" Margin="0,26,0,27"/>
+                    <Button x:Name="Btn_DeleteClient" Command="{Binding DeleteCommand}" Grid.Row="8" Grid.Column="3" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Supprimer" FontSize="30" Margin="0,26,0,27"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Crédits" Height="50" Width="100">

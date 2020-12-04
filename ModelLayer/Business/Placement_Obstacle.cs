@@ -26,9 +26,6 @@ namespace ModelLayer.Business
         
         public Placement_Obstacle(){}
 
-        public Placement_Obstacle()
-        {
-
-        }
+      
     }
 }

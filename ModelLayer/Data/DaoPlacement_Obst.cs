@@ -34,7 +34,7 @@ namespace ModelLayer.Data
         public List<Placement_Obstacle> SelectAll()
         {
             List<Placement_Obstacle> listPlacement_obs = new List<Placement_Obstacle>();
-            DataTable myTable = this.thedbal.SelectAll("Joueur");
+            DataTable myTable = this.thedbal.SelectAll("placement_obstacle");
 
             foreach (DataRow r in myTable.Rows)
             {
@@ -57,7 +57,7 @@ namespace ModelLayer.Data
         public Placement_Obstacle SelectById(int id)
         {
             DataRow rowPlacement_obs = this.thedbal.SelectById("Placement_obstacle", id);
-            Reservation myReservation = this.theDaoReservation.SelectById((int)rowPlacement_obs["id"]);
+            Reservation myReservation = this.theDaoReservation.SelectbyId((int)rowPlacement_obs["id"]);
             Obstacle myObstacle = this.theDaoObstacle.SelectById((int)rowPlacement_obs["id"]);
 
             return new Placement_Obstacle((int)rowPlacement_obs["num_placement"], myReservation, myObstacle);

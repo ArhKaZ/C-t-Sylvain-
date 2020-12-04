@@ -37,9 +37,6 @@ namespace ModelLayer.Business
         
         public Obstacle(){}
 
-        public Obstacle()
-        {
-
-        }
+       
     }
 }

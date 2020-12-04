@@ -32,6 +32,6 @@ namespace ModelLayer.Business
         public string Identifiant { get => identifiant; set => identifiant = value; }
         public string Mdp { get => mdp; set => mdp = value; }
 
-        public Utilisateur() { }
+       
     }
 }

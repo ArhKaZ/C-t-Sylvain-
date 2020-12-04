@@ -28,7 +28,7 @@ namespace PPE
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            mydbal = new Dbal("Escp_Game");
+            mydbal = new Dbal("escp_Game");
             theDaoAvis = new DaoAvis(mydbal, theDaoClient, theDaoTheme);
             theDaoClient = new DaoClient(mydbal);
             theDaoObstacle = new DaoObstacle(mydbal, theDaoTheme);
@@ -42,6 +42,11 @@ namespace PPE
 
             MainWindow wnd = new MainWindow(theDaoAvis, theDaoClient, theDaoObstacle, theDaoPObstacle, theDaoReservation, theDaoSalle, theDaoTheme, theDaoTransaction, theDaoUtilisateur, theDaoVille);
             wnd.Show();
+        }
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+            e.Handled = true;
         }
     }
 }

@@ -32,9 +32,6 @@ namespace ModelLayer.Business
         
         public Avis(){}
 
-        public Avis()
-        {
-
-        }
+        
     }
 }
